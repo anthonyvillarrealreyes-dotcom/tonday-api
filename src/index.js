@@ -21,7 +21,10 @@ const CONFIG = {
   videointro: {
     enabled: getEnv('video_intro_enabled'),
     url: process.env.video_intro_url || ""
-  }
+  },
+  // Nuevas funciones de seguridad e identidad
+  kyc: getEnv('kyc_enabled'),
+  bank_integration: getEnv('bank_integration_enabled')
 };
 
 app.get('/', (req, res) => {
@@ -40,8 +43,7 @@ app.get('/api/:servicio', (req, res) => {
   res.json({ mensaje: `acceso concedido a ${servicio}` });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Sistema Tonday operativo en puerto ${PORT}`);
 });
-  
